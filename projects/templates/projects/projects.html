@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<img style="width:  200px;" src="{% static 'images/serenity.jpg' %}" />
+
+<h1>Projects</h1>
+
+<!-- <p>One brave soul did take a stab at translating the 
+    almost-not-quite-Latin. According to The Guardian,
+    Jaspreet Singh Boparai undertook the challenge with the goal
+    of making the text “precisely as incoherent in English as it
+    is in Latin - and to make it incoherent in the same way”.
+    As a result, “the Greek 'eu' in Latin became the French 'bien' [...]
+    and the '-ing' ending in 'lorem ipsum' 
+    seemed best rendered by an '-iendum' in English.”</p> -->
+
+    <!-- *** IF STATEMENT *** -->
+
+    <!-- <h1>Name: {{name}}</h1>
+    <h3>Gender: {{gender}}</h3>
+    <h5>Age: {{age}}</h5>
+    {% if age > 14%}
+    <h4>zebdiel is older than 14</h4>
+
+    {% elif age == 14 %}
+    <h4>zebdiel is 14</h4>
+
+    {% else %}
+    <h4>zebdiel is UNDER 14</h4>
+
+    {% endif %} -->
+
+
+    <!-- *** FOR LOOP STATEMENT *** -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Description</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td><a href="{% url 'project' project.id %}">{{project.title}}{% if project.topRated %}<strong>TOP RATED</strong>{% endif %}</a></td>
+                <td>{{project.description}}</td>
+                <td><a href="{% url 'update-project' project.id %}">Edit</a></td>
+                <td><a href="{% url 'delete-project' project.id %}">Delete</a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock content %}
+
+    
